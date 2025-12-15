@@ -1,0 +1,216 @@
+<style>
+/* ====================================================================
+   CSS STYLE BARU (Playful Luxury)
+   ==================================================================== */
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  /* Background gradient + texture */
+  background:
+    radial-gradient(circle at 20% 20%, #ffe0f0 0%, transparent 40%),
+    radial-gradient(circle at 80% 30%, #e0f7ff 0%, transparent 40%),
+    radial-gradient(circle at 50% 80%, #fff5d1 0%, transparent 40%),
+    linear-gradient(135deg, #fff 0%, #fdf1ff 100%);
+  color: #333;
+}
+
+/* Judul dengan Gradient Text */
+.title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #ff4d8d, #ffb347, #7ed6df);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Katalog Layout */
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+/* Kartu Layanan */
+.card {
+  background: rgba(255,255,255,0.95);
+  border-radius: 20px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 12px 20px rgba(0,0,0,0.12);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid #f0f0f0; /* Tambah sedikit border halus */
+}
+
+.card:hover {
+  transform: translateY(-6px) rotate(-0.5deg);
+  box-shadow: 0 18px 28px rgba(0,0,0,0.18);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.card h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+  color: #444;
+}
+
+.card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Tombol colorful */
+.card button {
+  margin-top: 10px;
+  padding: 10px 16px;
+  width: 100%;
+  border: none;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  /* Gradient yang menarik */
+  background: linear-gradient(90deg, #ff4d8d, #ffb347);
+  box-shadow: 0 4px 10px rgba(255, 77, 141, 0.4);
+  transition: opacity 0.3s;
+}
+
+.card button:active {
+  opacity: 0.8;
+}
+
+/* Wrapper Keranjang & Checkout */
+.section-wrapper {
+  max-width: 650px;
+  margin: 50px auto;
+}
+
+/* Checkout box */
+.checkout {
+  padding: 25px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #ffffff, #fdf6ff);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.checkout h2 {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(90deg, #7ed6df, #ff4d8d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.checkout label {
+  font-weight: 600;
+  display: block;
+  margin-top: 10px;
+  color: #6c5ce7;
+}
+
+.checkout input, .checkout select {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  width: 100%;
+  margin-top: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: #fcfcff;
+  transition: border-color 0.3s;
+}
+
+.checkout input:focus, .checkout select:focus {
+  outline: none;
+  border-color: #ff4d8d;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+/* Tombol Reset (Undo) */
+.undo {
+  background: linear-gradient(90deg, #b2bec3, #636e72);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  flex: 1;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Tombol Bayar (Pay/Checkout) */
+.pay {
+  background: linear-gradient(90deg, #6c5ce7, #ff4d8d);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  flex: 3; /* Tombol ini lebih besar */
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.5);
+}
+
+/* Keranjang */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px dashed #eee;
+  font-size: 15px;
+}
+
+.cart-item button {
+  background: none;
+  border: none;
+  color: #ff4d8d;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px;
+}
+
+/* Tampilan Admin */
+.seller-ticket {
+  max-width: 450px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 25px;
+  background: #fff;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  border-top: 8px solid #6c5ce7;
+  text-align: center;
+}
+.seller-ticket h2 { margin-bottom: 15px; }
+.seller-ticket button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  background: linear-gradient(90deg, #6c5ce7, #2ecc71);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+</style>

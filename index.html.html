@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nail Art & Beauty Service by Salsa</title>
+
+<style>
+/* =========================
+   1. DASAR TAMPILAN (VIBRANT)
+========================= */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Gradient dari Coral Pink yang cerah ke Lavender yang lembut */
+  background: linear-gradient(135deg, #ff9999, #c0a8e0); 
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  color: #333; 
+}
+
+h1, h2 {
+  text-align: center;
+  /* Hot Pink/Merah Muda Kuat */
+  color: #ff3366; 
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+/* =========================
+   2. KATALOG (GRID)
+========================= */
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.95); 
+  border-radius: 25px; 
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(255, 51, 102, 0.2); 
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-8px); 
+  box-shadow: 0 15px 35px rgba(255, 51, 102, 0.3);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 18px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-size: 1.05rem;
+  margin: 10px 0 5px;
+  color: #ff3366; 
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.card button {
+  width: 100%;
+  padding: 12px;
+  background: #ff6699; 
+  border: none;
+  border-radius: 15px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.1s;
+}
+
+.card button:hover {
+  background: #ff3366;
+  transform: scale(1.02);
+}
+
+/* =========================
+   3. KERANJANG & CHECKOUT
+========================= */
+.section-wrapper {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item button {
+  background: #ffe6e6; 
+  color: #ff3366;
+  border: 1px solid #ff3366;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+}
+
+/* Input Styles */
+input, select {
+  width: 100%;
+  padding: 14px;
+  margin: 8px 0 20px;
+  border: 2px solid #ffdbf0;
+  background-color: #fff;
+  border-radius: 12px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  color: #555;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #ff3366;
+  box-shadow: 0 0 5px rgba(255, 51, 102, 0.5);
+}
+
+.btn-checkout {
+  width: 100%;
+  padding: 18px;
+  background: #25d366; /* Warna WA (Hijau) */
+  border: none;
+  border-radius: 15px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+}
+
+.btn-checkout:hover {
+  background: #1ebc57;
+}
+
+/* =========================
+   4. TAMPILAN KHUSUS SELLER
+========================= */
+.seller-ticket {
+  max-width: 400px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border-top: 5px solid #25d366;
+}
+</style>
+</head>
+
+<body>
+
+  <div id="main-app">
+    <h1 class="title">✨ Nail Art & Beauty by Salsa ✨</h1>
+
+    <div class="catalog">
+      <div class="card">
+        <img src="https://i.imgur.com/tB20O8x.png" alt="Simple Nail">
+        <h3>Simple Nail Art</h3>
+        <p>Rp30.000 • 20 mnt</p>
+        <button onclick="addToCart(0)">+ Tambah</button>
+      </div>
+
+      <div class="card">
+        <img src="https://i.imgur.com/3gm6WtX.png" alt="Complete Nail">
+        <h3>Complete Nail Art</h3>
+        <p>Rp55.000 • 40 mnt</p>
+        <button onclick="addToCart(1)">+ Tambah</button>
+      </div>
+
+      <div class="card">
+        <img src="https://i.imgur.com/4Qv4oGG.png" alt="Perawatan Kuku">
+        <h3>Perawatan Kuku</h3>
+        <p>Rp25.000 • 20 mnt</p>
+        <button onclick="addToCart(2)">+ Tambah</button>
+      </div>
+
+      <div class="card">
+        <img src="https://i.imgur.com/V0ptNWQ.png" alt="Perawatan Kaki">
+        <h3>Perawatan Kaki</h3>
+        <p>Rp40.000 • 20 mnt</p>
+        <button onclick="addToCart(3)">+ Tambah</button>
+      </div>
+      
+      <div class="card">
+        <img src="https://i.imgur.com/4JOwEc5.png" alt="Perawatan Muka">
+        <h3>Perawatan Muka</h3>
+        <p>Rp45.000 • 20 mnt</p>
+        <button onclick="addToCart(4)">+ Tambah</button>
+      </div>
+
+      <div class="card">
+        <img src="https://i.imgur.com/uJ4Eesc.png" alt="Makeup">
+        <h3>Jasa Make Up</h3>
+        <p>Rp100.000 • 50 mnt</p>
+        <button onclick="addToCart(5)">+ Tambah</button>
+      </div>
+    </div>
+
+    <div class="section-wrapper">
+      <h2>🛒 Keranjang Kamu</h2>
+      <div id="cart">Belum ada layanan dipilih</div>
+
+      <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+      <h3>📅 Jadwal Booking</h3>
+      <label>Tanggal</label>
+      <input type="date" id="date">
+
+      <label>Jam</label>
+      <select id="time">
+        <option value="">Pilih tanggal dulu</option>
+      </select>
+
+      <button class="btn-checkout" onclick="checkout()">
+        Checkout via WhatsApp 💬
+      </button>
+    </div>
+  </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  
+  /* =========================
+     1. CONFIG & DATA
+  ========================= */
+  // ⚠️ GANTI DENGAN NOMOR WHATSAPP SELLER (Format: 628...)
+  const SELLER_WA = "628123456789"; 
+  
+  // ⚠️ GANTI DENGAN LINK PEMBAYARAN KAMU
+  const PAYMENT_LINK = "https://linktr.ee/ISIPAYMENTKAMU";
+
+  const services = [
+    { name: "Simple Nail Art", price: 30000 },
+    { name: "Complete Nail Art", price: 55000 },
+    { name: "Perawatan Kuku", price: 25000 },
+    { name: "Perawatan Kaki", price: 40000 },
+    { name: "Perawatan Muka", price: 45000 },
+    { name: "Make Up (Jasa)", price: 100000 }
+  ];
+
+  const timeSlots = ["10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
+  let cart = [];
+
+  // Referensi Element HTML
+  const elDate = document.getElementById("date");
+  const elTime = document.getElementById("time");
+  const elCart = document.getElementById("cart");
+
+  /* =========================
+     2. LOGIKA JAM & TANGGAL
+  ========================= */
+  if (elDate && elTime) {
+    elDate.addEventListener("change", () => {
+      elTime.innerHTML = '<option value="">Pilih jam</option>';
+      
+      timeSlots.forEach(jam => {
+        const option = document.createElement("option");
+        option.value = jam;
+        option.textContent = jam;
+        elTime.appendChild(option);
+      });
+    });
+  }
+
+  /* =========================
+     3. LOGIKA KERANJANG (CART)
+  ========================= */
+  
+  const formatRupiah = (angka) => {
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0
+    }).format(angka);
+  };
+
+  // Fungsi Global: Tambah ke Cart
+  window.addToCart = (index) => {
+    cart.push(services[index]);
+    renderCart();
+  };
+
+  // Fungsi Global: Hapus dari Cart
+  window.removeItem = (index) => {
+    cart.splice(index, 1);
+    renderCart();
+  };
+
+  // Render Tampilan Cart
+  function renderCart() {
+    if (cart.length === 0) {
+      elCart.innerHTML = "<p style='text-align:center; color:#888;'>Belum ada layanan dipilih</p>";
+      return;
+    }
+
+    elCart.innerHTML = ""; // Bersihkan dulu
+    
+    cart.forEach((item, index) => {
+      const itemHTML = `
+        <div class="cart-item">
+          <div>
+            <strong>${item.name}</strong>
+            <div style="font-size:0.9em; color:#666;">${formatRupiah(item.price)}</div>
+          </div>
+          <button onclick="removeItem(${index})">❌</button>
+        </div>
+      `;
+      elCart.innerHTML += itemHTML;
+    });
+  }
+
+  /* =========================
+     4. CHECKOUT (CUSTOMER)
+  ========================= */
+  window.checkout = () => {
+    const dateVal = elDate.value;
+    const timeVal = elTime.value;
+
+    if (cart.length === 0) {
+      alert("❌ Keranjang masih kosong, pilih layanan dulu ya! 💅");
+      return;
+    }
+    if (!dateVal || !timeVal) {
+      alert("❌ Mohon pilih Tanggal dan Jam booking.");
+      return;
+    }
+
+    let customerWA = prompt("Masukkan No. WA Kakak untuk konfirmasi (contoh: 08123...):");
+    
+    if (!customerWA) return; 
+    
+    if (customerWA.startsWith("0")) {
+      customerWA = "62" + customerWA.slice(1);
+    }
+
+    // Hitung Total & Buat List Pesanan
+    let total = 0;
+    let listText = "";
+    
+    cart.forEach(item => {
+      total += item.price;
+      listText += `- ${item.name} (${formatRupiah(item.price)})%0A`;
+    });
+
+    // Buat Link "Mode Seller" (Link Konfirmasi Admin)
+    const currentURL = window.location.href.split('?')[0]; 
+    const sellerLink = `${currentURL}?mode=seller&wa=${customerWA}&date=${dateVal}&time=${timeVal}&total=${total}`;
+
+    // Susun Pesan WhatsApp
+    const msg = 
+      `Halo Kak, saya mau booking! 💖%0A%0A` +
+      `*Detail Pesanan:*%0A` +
+      `${listText}%0A` +
+      `📅 Tanggal: ${dateVal}%0A` +
+      `⏰ Jam: ${timeVal}%0A` +
+      `💰 *Total: ${formatRupiah(total)}*%0A%0A` +
+      `Mohon info pembayarannya ya.%0A` +
+      `-----------------------%0A` +
+      `👇 *Link Konfirmasi (Khusus Admin):*%0A` +
+      `${encodeURIComponent(sellerLink)}`;
+
+    // Buka WhatsApp (WA Seller)
+    window.open(`https://wa.me/${SELLER_WA}?text=${msg}`, "_blank");
+
+    // Opsi Buka Payment Gateway
+    if(confirm("Apakah ingin membuka link pembayaran sekarang?")) {
+      window.open(PAYMENT_LINK, "_blank");
+    }
+  };
+
+  /* =========================
+     5. MODE SELLER (AUTO-DETECT)
+  ========================= */
+  const params = new URLSearchParams(window.location.search);
+  
+  if (params.get("mode") === "seller") {
+    
+    // Sembunyikan konten utama
+    document.getElementById('main-app').style.display = 'none';
+
+    const wa = params.get("wa");
+    const date = params.get("date");
+    const time = params.get("time");
+    const total = Number(params.get("total"));
+    const totalRupiah = formatRupiah(total);
+
+    // Render tampilan admin/seller
+    document.body.insertAdjacentHTML('beforeend', `
+      <div class="seller-ticket">
+        <h2 style="color:#25d366; margin-top:0;">🔐 Mode Admin</h2>
+        <p style="color:#666;">Konfirmasi pembayaran customer.</p>
+        <hr style="border:0; border-top:1px dashed #ddd; margin:20px 0;">
+        
+        <div style="text-align:left;">
+           <p><strong>Customer WA:</strong> <a href="https://wa.me/${wa}">+${wa}</a></p>
+           <p><strong>Tanggal:</strong> ${date}</p>
+           <p><strong>Jam:</strong> ${time}</p>
+           <p style="font-size:1.2rem; color:#d81b60;"><strong>Total: ${totalRupiah}</strong></p>
+        </div>
+
+        <button id="btnConfirm" style="width:100%; padding:15px; margin-top:20px; background:#25d366; color:white; border:none; border-radius:10px; font-weight:bold; cursor:pointer; font-size:1rem;">
+          ✅ Kirim Tiket Lunas
+        </button>
+        
+        <br><br>
+        <a href="${window.location.pathname}" style="color:#999; text-decoration:none; font-size:0.9rem;">&larr; Kembali ke Home</a>
+      </div>
+    `);
+
+    // Aksi Tombol Konfirmasi Seller
+    document.getElementById("btnConfirm").addEventListener("click", () => {
+      const replyMsg = 
+        `Halo Kak! Pembayaran sudah diterima ✅%0A%0A` +
+        `Booking kamu pada *${date} jam ${time}* sudah CONFIRMED.%0A` +
+        `Sampai jumpa di lokasi ya cantik! 💖`;
+      
+      window.location.href = `https://wa.me/${wa}?text=${replyMsg}`;
+    });
+  }
+
+  // Panggil renderCart saat halaman pertama dimuat
+  renderCart();
+});
+</script>
+
+</body>
+</html>
